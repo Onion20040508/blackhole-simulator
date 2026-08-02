@@ -1,4 +1,52 @@
-# Kerr 黑洞沙盒（Schwarzschild + Kerr）
+# Kerr Black Hole Sandbox (Schwarzschild + Kerr)
+
+**GPU real-time black hole sandbox**: relativistic ray tracing with gravitational
+lensing, launchable particle "stars" that get tidally disrupted and evolve into
+accretion disks, reflective spheres on geodesic orbits, a curved spatial grid —
+and a camera that can fly **through the event horizon**. Geometric units
+$G=c=M=1$, spin $a\in[0,1)$; $a=0$ recovers Schwarzschild.
+
+## Highlights
+
+- **Kerr–Schild metric** (horizon-regular Cartesian form): backward null
+  geodesics integrated via the super-Hamiltonian with analytic gradients and
+  adaptive RK4. With the camera inside the horizon, rays keep propagating —
+  you see the actual optical scene inside (the external universe compressed
+  into a bright patch).
+- **Tidal disruption, emergent accretion**: up to ~8M test particles follow
+  full 3D timelike geodesics. Tidal stretching appears automatically; a
+  phenomenological "circularization dissipation" relaxes debris streams into
+  a disk. Per-frame deposition onto a 320³ density+velocity grid gives
+  lensing, redshift $g=(p\cdot u_{\rm obs})/(p\cdot u_{\rm em})$, and beaming
+  $g^{4\beta}$ from the *actual* deposited velocity field.
+- **Interactive**: aim with a geodesic prediction line and launch stars in
+  real time; place orbits solved exactly for $(E, L)$ from a chosen pericenter;
+  toggle sky map / celestial grid / spatial lattice; offline-quality frame
+  recording with an ffmpeg-ready output.
+- **Companion analysis script** (`geodesic_orbits.py`, f64 scipy): photon
+  sphere and Kerr photon shell, frame dragging, perihelion precession,
+  horizons and ergosphere.
+
+## Quickstart
+
+```powershell
+py -3.11 -m venv .venv
+.venv\Scripts\pip install taichi numpy scipy matplotlib pillow
+.venv\Scripts\python.exe kerr_raytracer.py     # interactive (a few seconds of JIT on first launch)
+```
+
+Requires an NVIDIA GPU (Taichi CUDA backend). Mouse to steer, WASD+Q/E to fly,
+right-click to aim and release to launch a star, P for screenshots. See the
+Chinese section below for the full control reference and implementation notes.
+
+*Known approximations: f32 ray tracing (use the f64 companion for quantitative
+work); inside-horizon camera is a coordinate-frame image, not a physical
+observer; mirror-sphere reflection omits the sphere's own Doppler shift;
+circularization dissipation is phenomenological, not hydrodynamics.*
+
+---
+
+# 中文完整说明
 
 GPU 实时黑洞沙盒：引力透镜 + 可发射的粒子恒星（潮汐瓦解）+ 反光铁球 + 立体网格，
 相机可飞越视界。几何单位 $G=c=M=1$，自旋 $a\in[0,1)$；$a=0$ 即 Schwarzschild。
