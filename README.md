@@ -1,5 +1,11 @@
 # Kerr Black Hole Sandbox (Schwarzschild + Kerr)
 
+![Tidal debris stream around a spinning black hole, rendered in real time](figures/hero.png)
+
+*A star's tidal debris circularizing around a Kerr black hole — gravitational
+lensing, the photon ring, and the secondary image of the stream are all visible.
+Rendered in real time on GPU.*
+
 **GPU real-time black hole sandbox**: relativistic ray tracing with gravitational
 lensing, launchable particle "stars" that get tidally disrupted and evolve into
 accretion disks, reflective spheres on geodesic orbits, a curved spatial grid —
